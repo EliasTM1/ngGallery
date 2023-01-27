@@ -1,3 +1,15 @@
-p {
-  border-bottom: 5px solid black;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;;
+  height: 128px;
+  border-bottom: .1px solid rgb(0,0,0,.1);
+  margin-inline: auto;
+
+  span {
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    color:rgb(0,0,0,.5);
+  }
 }

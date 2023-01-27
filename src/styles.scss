@@ -1,4 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/variables";
+@font-face {
+  font-family: "Baskerville Regular";
+  src: url(./assets/Libre_Baskerville/LibreBaskerville-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Baskerville Bold";
+  src: url(./assets/Libre_Baskerville/LibreBaskerville-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Baskerville Italic";
+  src: url(./assets/Libre_Baskerville/LibreBaskerville-Italic.ttf);
+}
+
 body {
   margin: 0 !important;
+  font-family: "Baskerville Bold";
+  line-height: 28px;
+  font-size: 14px;
+  max-width: 100vw;
+  // position: fixed;
 }
-/* You can add global styles to this file, and also import other style files */
+
+h1 {
+  font-family: "Baskerville Bold";
+  font-size: 36px;
+  line-height: 64px;
+}
+
+h2 {
+  font-family: "Baskerville Bold";
+  font-size: 24px;
+  line-height: 29px;
+}
+
+h3 {
+  font-family: "Baskerville Bold";
+  font-size: 18px;
+  line-height: 22px;
+}
+
+h4 {
+  font-family: "Baskerville Regular";
+  font-size: 15px;
+  line-height: 19px;
+}
+
+h5 {
+  font-family: "Baskerville Regular";
+  font-size: 13px;
+  line-height: 17px;
+}
