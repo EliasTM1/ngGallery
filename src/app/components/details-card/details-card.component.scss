@@ -7,7 +7,7 @@ section {
     display: flex;
     width: 90%;
     margin-top: 3rem;
-    border: 3px purple solid;
+    // border: 3px purple solid;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -16,7 +16,7 @@ section {
       width: fit-content;
       height: fit-content;
       // background-color: red;
-      border: 3px yellow solid;
+      // border: 3px yellow solid;
       position: relative;
 
       div {
@@ -28,7 +28,7 @@ section {
         align-items: center;
         width: 152px;
         height: 40px;
-        border: red solid 1px;
+        // border: red solid 1px;
         background-color: rgb(0, 0, 0, 0.5);
         position: absolute;
         bottom: 1.5rem;
@@ -55,12 +55,12 @@ section {
     }
 
     .card-body {
-      border: 3px skyblue solid;
+      // border: 3px skyblue solid;
       height: 624px;
 
       .card-info {
         width: 522px;
-        border: 3px yellow solid;
+        // border: 3px yellow solid;
         height: 550px;
         position: relative;
 
@@ -100,7 +100,7 @@ section {
     .test-container {
       left: 25%;
       position: absolute;
-      border: 3px solid orange;
+      // border: 3px solid orange;
       width: 400px;
       height: inherit;
       height: 100%;
