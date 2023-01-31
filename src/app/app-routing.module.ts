@@ -7,16 +7,16 @@ import { GalleryGridComponent } from './pages/gallery-grid/gallery-grid.componen
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'gallery',
     component: GalleryGridComponent,
   },
   {
-    path: 'details',
+    path: 'details/:id',
     component: DetailsCardComponent,
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'gallery',
   },
 ];
 

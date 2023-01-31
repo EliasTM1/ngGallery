@@ -1,0 +1,332 @@
+@import "../../../styles/variables";
+section {
+  display: flex;
+  justify-content: center;
+
+  .card-container {
+    display: flex;
+    width: 90%;
+    margin-top: 3rem;
+    border: 3px purple solid;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    .card-hero {
+      width: fit-content;
+      height: fit-content;
+      // background-color: red;
+      border: 3px yellow solid;
+      position: relative;
+
+      div {
+        cursor: pointer;
+        color: white;
+        text-align: center;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        width: 152px;
+        height: 40px;
+        border: red solid 1px;
+        background-color: rgb(0, 0, 0, 0.5);
+        position: absolute;
+        bottom: 1.5rem;
+        margin-left: 1rem;
+
+        span {
+          width: 100%;
+          font-family: "Baskerville Regular";
+          font-size: 10px;
+        }
+
+        img {
+          width: 12px;
+          height: 12px;
+          filter: invert(1);
+          margin-left: 1rem;
+        }
+      }
+
+      img {
+        width: 475px;
+        height: 550px;
+      }
+    }
+
+    .card-body {
+      border: 3px skyblue solid;
+      height: 624px;
+
+      .card-info {
+        width: 522px;
+        border: 3px yellow solid;
+        height: 550px;
+        position: relative;
+
+        p {
+          font-family: "Baskerville Regular";
+          width: 70%;
+          text-align: justify;
+          position: absolute;
+          top: 5rem;
+          position: absolute;
+          top: 6.5rem;
+          height: fit-content;
+          margin-left: 3rem;
+        }
+
+        a {
+          text-decoration: none;
+          color: black;
+          text-decoration: solid black underline 0.9px;
+          position: absolute;
+          bottom: 0;
+          margin-left: 3rem;
+        }
+
+        #date {
+          text-align: right;
+          font-size: 200px;
+          position: absolute;
+          top: 4rem;
+          right: 0;
+          color: rgb(0, 0, 0, 0.08);
+          letter-spacing: 0.5rem;
+        }
+      }
+    }
+
+    .test-container {
+      left: 25%;
+      position: absolute;
+      border: 3px solid orange;
+      width: 400px;
+      height: inherit;
+      height: 100%;
+      .test-title {
+        background-color: white;
+        font-family: "Baskerville Regular";
+        height: 15rem;
+        line-height: 4rem;
+        padding-left: 2rem;
+        font-size: 56px;
+        width: 80%;
+
+        div {
+          display: revert;
+          font-family: "Baskerville Regular";
+          font-size: 0.9rem;
+          // background-color: red;
+          letter-spacing: 1px;
+          color: rgb(0, 0, 0, 0.5);
+          display: flex;
+        }
+        // width: 445px;
+      }
+    }
+    #artist {
+      position: absolute;
+      bottom: 2rem;
+      padding-left: 6rem;
+    }
+
+    @media screen and (max-width: 1440px) {
+      .test-container {
+        // background-color: red;
+        // left: 34%;
+        .test-title {
+          background-color: white;
+          font-family: "Baskerville Regular";
+          // height: 12rem;
+          line-height: 4rem;
+          padding-left: 3rem;
+          font-size: 56px;
+        }
+      }
+      #artist {
+        padding-left: 8rem;
+      }
+    }
+
+    @media screen and (max-width: 1226px) {
+      .test-container {
+        left: 15%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet-brkPoint) {
+  section {
+    .card-container {
+      .card-hero {
+        div {
+          span {
+            // width: 100%;
+            // font-family: "Baskerville Regular";
+            // font-size: 10px;
+          }
+
+          img {
+            // width: 12px;
+            // height: 12px;
+            // filter: invert(1);
+            // margin-left: 1rem;
+          }
+        }
+
+        img {
+          // width: 475px;
+          // height: 550px;
+        }
+      }
+
+      .card-body {
+        margin-top: 4rem;
+        .card-info {
+          p {
+            margin-left: 8rem;
+
+          }
+
+          a {
+            margin-left: 8rem;
+          }
+
+          #date {
+            right: unset;
+          }
+        }
+      }
+
+      .test-container {
+        left: 45%;
+        height: 35%;
+        .test-title {
+          // width: 445px;
+        }
+      }
+
+      #artist {
+        right: 0;
+        top: 54.5%;
+        width: 128px;
+        height: 128px;
+      }
+    }
+  }
+
+  .card-container {
+    // background-color: skyblue;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .test-container {
+    left: 20% !important;
+    height: 35%;
+    // background-color: green;
+  }
+}
+
+
+@media screen and (max-width: $mobile-brkPoint) {
+  section {
+    .card-container {
+      width: fit-content;
+      margin-top: 0rem;
+      .card-hero {
+        div {
+          top: 1rem;
+          left: 1.5rem;
+
+          span {
+            // width: 100%;
+            // font-family: "Baskerville Regular";
+            // font-size: 10px;
+          }
+
+          img {
+            width: 20px;
+            margin: 0;
+            height: auto;
+            margin-left: .8rem;
+            // width: 327px;
+            // width: 327px;
+            // height: 282px;
+            // width: 12px;
+            // height: 12px;
+            // filter: invert(1);
+            // margin-left: 1rem;
+          }
+        }
+
+        img {
+          width: 327px;
+          margin-inline: 24px;
+          height: auto;
+
+          // width: 475px;
+          // height: 550px;
+        }
+      }
+
+      .card-body {
+        margin-top: 4rem;
+        width: 85%;
+        height: 700px;
+        margin-left: 1.5rem;
+        .card-info {
+          margin-top: 2rem;
+          width: 100%;
+
+          p {
+            // margin-left: 8rem;
+            margin-left: 0;
+            width: 95%;
+            text-align: left;
+          }
+
+          a {
+            margin-left: 0rem;
+            left: 0;
+          }
+
+          #date {
+            // right: unset;
+            font-weight: bold;
+            font-size: 100px;
+            margin-left: 6rem ;
+            letter-spacing: 1px;
+            position: relative;
+          }
+        }
+      }
+
+      .test-container {
+        width: 100%;
+        left: 0 !important;
+        top: 28%;
+        .test-title {
+          height: 133px;
+          padding-left: 3.5rem;
+          width: 260px;
+          font-size: 24px;
+        }
+      }
+      #artist {
+        left: 1rem;
+        top: 30.2%;
+        margin-left: -100px;
+        height: 84px;
+        width: 84px;
+      }
+    }
+  }
+
+  .card-container {
+    flex-direction: column;
+  }
+}

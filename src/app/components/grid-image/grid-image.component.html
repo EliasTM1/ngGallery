@@ -1,3 +1,13 @@
-<div>
-  <img src="../../../assets/gallery/arnolfini-portrait/thumbnail.jpg" alt="some">
+<div class="masonry-item" [routerLink]="['/details', prepareArg()]">
+  <img src="{{ img }}" alt="some"/>
+  <div>
+    <span>
+      {{ name }}
+    </span>
+    <span>
+      {{ artist }}
+    </span>
+  </div>
+  <br />
+  <br>
 </div>

@@ -1,6 +1,52 @@
-div {
-  display: flex;
-  img{
-    width: 310px;
+.masonry-item {
+  width: fit-content;
+  margin: 0;
+  position: relative;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+    position: absolute;
+    background-color: transparent;
+    bottom: 2.3rem;
+    height: 260px;
+    width: 100%;
+    cursor: pointer;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.8)
+    );
+
+    span {
+      display: inline-block;
+      width: 90%;
+      color: white;
+      font-family: "Baskerville Regular";
+    }
+
+    span:nth-child(1) {
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    span:nth-child(2) {
+      margin-bottom: 2rem;
+      font-size: 0.8125rem;
+    }
+  }
+
+  &:hover {
+  }
+}
+
+img {
+  width: auto;
+
+  &:hover {
+    opacity: .5;
+    cursor: pointer;
   }
 }

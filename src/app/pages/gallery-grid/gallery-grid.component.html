@@ -1,1 +1,12 @@
-<app-grid-image></app-grid-image>
+<div class="gallery-container">
+  <ngx-masonry [options]="options" [ngStyle]="containerStyles">
+    <app-grid-image
+      ngxMasonryItem
+      *ngFor="let masterPiece of displayData"
+      [img]="masterPiece.image"
+      [name]="masterPiece.title"
+      [artist]="masterPiece.name"
+      class="gallery-image"
+    ></app-grid-image>
+  </ngx-masonry>
+</div>

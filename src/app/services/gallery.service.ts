@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, defaultIfEmpty, delay, of} from 'rxjs';
+import galleryData from '../../mocks/data.json'
 
 @Injectable({
   providedIn: 'root'
 })
 export class GalleryService {
 
-  constructor(private http: HttpClient) {}
+  constructor() {
 
-  mocksPath : string = '../../mocks/data.json'
+  }
 
-  getJSON(path: string = this.mocksPath): Observable<any> {
-    return this.http.get(path);
-}
+
+  getGallery () : Observable<any> {
+    return of(galleryData).pipe(
+      delay(50),
+      defaultIfEmpty("No data :(")
+      )
+  }
 }

@@ -22,3 +22,8 @@ export interface Hero {
   small: string;
   large: string;
 }
+export interface GalleryTile {
+  image: string;
+  title: string;
+  name: string;
+}

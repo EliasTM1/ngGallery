@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { GalleryService } from 'src/app/services/gallery.service';
-import { Gallery } from 'src/interfaces/mockData.interface';
+import { AfterViewInit, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-grid-image',
   templateUrl: './grid-image.component.html',
-  styleUrls: ['./grid-image.component.scss']
+  styleUrls: ['./grid-image.component.scss'],
 })
-export class GridImageComponent implements OnInit {
+export class GridImageComponent implements AfterViewInit {
 
-  constructor(private galleryService: GalleryService) {}
-
-  data : Gallery[] = []
-  SOME : any
-
-  ngOnInit(): void {
-    this.galleryService.getJSON().subscribe(subscription => {
-      console.log(subscription, "SUBD")
-    })
+  ngAfterViewInit(): void {
+    console.warn('-------------------------')
+    console.log(this.img)
+    console.log(this.name)
+    console.log(this.artist)
+    console.warn('-------------------------')
   }
+
+  @Input() img: string = '';
+  @Input() name: string = '';
+  @Input() artist: string = '';
+
+  prepareArg() {
+    return this.name.replace(/\s+/g, '_')
+  }
+
+
 
 }

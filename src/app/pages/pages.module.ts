@@ -3,6 +3,8 @@ import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaintsDetailsComponent } from './paints-details/paints-details.component';
+import { SharedModule } from '../shared/shared.module';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 
 
@@ -13,7 +15,8 @@ import { PaintsDetailsComponent } from './paints-details/paints-details.componen
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxMasonryModule
   ],
   exports: [
     PaintsDetailsComponent,
