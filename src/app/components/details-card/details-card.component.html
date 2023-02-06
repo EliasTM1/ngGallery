@@ -1,44 +1,43 @@
-<section>
+
+<section *ngFor="let artwork of currentMasterpiece async">
   <div class="card-container">
     <div class="card-hero">
       <img
-        src="../../../assets/gallery/arnolfini-portrait/hero-large.jpg"
-        alt="../../../assets/expand.png"
+        [src]="artwork.images.hero.large"
+        alt=":("
       />
-      <div>
+      <div (click)="viewFullImg()">
         <img src="../../../assets/expand.svg" alt="" />
         <span>VIEW IMAGE</span>
       </div>
     </div>
     <div class="card-body">
       <div class="card-info">
-        <span id="date">1937</span>
+        <span id="date">{{artwork.year}}</span>
         <P>
-          The Night Café (French: Le Café de nuit) is an oil painting created by
-          Dutch artist Vincent van Gogh in September 1888 in Arles. Its title is
-          inscribed lower right beneath the signature. The painting is owned by
-          Yale University and is currently held at the Yale University Art
-          Gallery in New Haven, Connecticut. The interior depicted is the Café
-          de la Gare, 30 Place Lamartine, run by Joseph-Michel Ginoux and his
-          wife Marie, who in November 1888 posed for Van Gogh's and Gauguin's
-          Arlésienne; a bit later, Joseph Ginoux evidently posed for both
-          artists, too.
+          {{artwork.description}}
         </P>
-        <a href="">Lorem, ipsum dolor.</a>
+        <a [href]="artwork.source">GO TO SOURCE</a>
       </div>
     </div>
     <div class="test-container">
       <div class="test-title">
-        The Night Café
+        {{artwork.name}}
         <div>
-          Vincent Van Gogh
+          {{artwork.artist.name}}
         </div>
       </div>
-        <img id="artist" src="../../../assets/gallery/arnolfini-portrait/artist.jpg" alt="">
+        <img id="artist" [src]="artwork.artist.image" alt="">
     </div>
   </div>
 </section>
 
-<div>
-  HOLa
+
+<div *ngIf="fullSizeOpen" >
+  <app-full-size-img
+  [img]="paint"
+  (close)="closePopup()"
+  ></app-full-size-img>
 </div>
+<!-- <ng-template > -->
+<!-- </ng-template> -->

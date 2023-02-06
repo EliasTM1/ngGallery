@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit , Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-full-size-img',
@@ -12,4 +13,10 @@ export class FullSizeImgComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() img : string = '';
+  @Output() close = new EventEmitter<any>();
+
+  closeFullSize() {
+    this.close.emit();
+  }
 }
