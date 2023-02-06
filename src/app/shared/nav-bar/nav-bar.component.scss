@@ -9,7 +9,12 @@ nav {
   margin-inline: auto;
   margin-bottom: 2rem;
 
+  img {
+    cursor: pointer;
+  }
+
   span {
+    cursor: pointer;
     font-size: 12px;
     letter-spacing: 2.5px;
     color:rgb(0,0,0,.5);
