@@ -8,11 +8,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 export class GridImageComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
-    console.warn('-------------------------')
-    console.log(this.img)
-    console.log(this.name)
-    console.log(this.artist)
-    console.warn('-------------------------')
+
   }
 
   @Input() img: string = '';
