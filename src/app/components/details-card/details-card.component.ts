@@ -13,11 +13,28 @@ import { Gallery } from 'src/interfaces/mockData.interface';
 export class DetailsCardComponent implements OnInit, OnDestroy {
 
   constructor(
-    private renderer: Renderer2,
-    private elementRef: ElementRef,
     private activaRoute : ActivatedRoute,
     private galleryService: GalleryService
     ) {}
+
+    masterpieceId : string | number | null = '';
+    subscriptions : Subscription[] = [];
+    galleryObs : Gallery[] = [];
+    currentMasterpiece : Gallery | any = null;
+    paint : string = '';;
+    fullSizeOpen : boolean = false;
+    activeSlideshow : boolean = false
+
+  ngOnInit(): void {
+    // * Get param id
+    this.subscriptions.push(this.galleryService.currentGallery.subscribe(gallery => gallery?.forEach(e => this.galleryObs.push(e))))
+    this.activaRoute.params.subscribe(param => {
+      const { id } = param;
+      !isNaN(id) ? this.startNumbrId(Number(id)) : this.startStrId(id)
+    })
+    this.galleryService.changeArtWork(this.currentMasterpiece);
+    this.paint = this.currentMasterpiece[0].images.hero.large
+  }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscr =>{
@@ -25,28 +42,21 @@ export class DetailsCardComponent implements OnInit, OnDestroy {
     })
   }
 
-    masterpieceId : string = '';
-    subscriptions : Subscription[] = [];
-    galleryObs : Gallery[] = [];
-    currentMasterpiece : Gallery | any = null;
-    paint : string = '';;
-    fullSizeOpen : boolean = false;;
-
-  ngOnInit(): void {
-    // * Get param id
-    this.activaRoute.params.subscribe(param => {
-      const { id } = param;
-      this.masterpieceId = id.replaceAll("_", " ").replace("-", " ");
-    })
-    // add Subscription
-    this.subscriptions.push(this.galleryService.currentGallery.subscribe(gallery => gallery?.forEach(e => this.galleryObs.push(e))))
+  startStrId(id : any) {
+    this.masterpieceId = id.replaceAll("_", " ")
     this.currentMasterpiece = this.galleryObs.filter(masterpiece => masterpiece.name === this.masterpieceId)
-    console.warn(this.currentMasterpiece, "MASTER MASTERMASTER")
-    this.galleryService.changeArtWork(this.currentMasterpiece);
-    this.galleryService.currentArtwrk.subscribe(e => {
-      console.log("ASTER gust", e)
+    return;
+  }
+
+  startNumbrId(id : number) {
+    this.masterpieceId = id
+    this.galleryService.changeSlideCounter(this.masterpieceId)
+    this.activeSlideshow = true;
+    this.galleryService.currentSlideshowCounter.subscribe(count => {
+      this.masterpieceId = count
+      this.currentMasterpiece = this.galleryObs.filter(masterpiece => masterpiece.id === this.masterpieceId)
     })
-    this.paint = this.currentMasterpiece[0].images.hero.large
+    return;
   }
 
   closePopup() {

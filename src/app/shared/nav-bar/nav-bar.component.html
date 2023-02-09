@@ -1,4 +1,10 @@
 <nav>
-  <img src="../../../assets/galleria_logo.svg" alt="logo"  routerLink="gallery"/>
-  <span> START SLIDESHOW </span>
+  <img
+    src="../../../assets/galleria_logo.svg"
+    alt="logo"
+    (click)="goToGallery()"
+  />
+  <span [routerLink]="['/details', 1]" (click)="toggleAutoSlideshow()">
+    {{ slideshowLegend }} SLIDESHOW
+  </span>
 </nav>

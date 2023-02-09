@@ -14,20 +14,4 @@ export class ProgressBarComponent implements OnInit {
 
   @Input() progress : number = 20;
 
-
-  changeMyValue() {
-    setTimeout(() => {
-      this.progress = 30
-    }, 1000);
-    setTimeout(() => {
-      this.progress = 40
-    }, 2000);
-    setTimeout(() => {
-      this.progress = 50
-    }, 3000);
-    setTimeout(() => {
-      this.progress = 70
-    }, 4000);
-
-  }
 }

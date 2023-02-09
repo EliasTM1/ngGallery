@@ -10,15 +10,20 @@ import { Gallery } from 'src/interfaces/mockData.interface';
 })
 export class GalleryService {
 
-  constructor() {
-
-  }
-
   private galleryAll = new BehaviorSubject<Gallery[] | null>(null);
   currentGallery = this.galleryAll.asObservable();
 
   private artwork = new BehaviorSubject<Gallery | null>(null);
   currentArtwrk = this.artwork.asObservable();
+
+  private slideshowState = new BehaviorSubject<boolean | null>(true);
+  currentSlideshowState = this.slideshowState.asObservable();
+
+  private slideshowCounter = new BehaviorSubject<number | null>(null);
+  currentSlideshowCounter = this.slideshowCounter.asObservable();
+
+  private galleryLength = new BehaviorSubject<number | null>(galleryData.length);
+  currentGalleryLength = this.galleryLength.asObservable();
 
   changeView(view: any) {
     this.galleryAll.next(view);
@@ -28,27 +33,21 @@ export class GalleryService {
     this.artwork.next(view);
   }
 
-  getGallery (id?  :string) : Observable<any> {
-    console.log(id)
-    if (id) {
-      return of(galleryData)
-      .pipe(
-        delay(50),
-        tap(value => console.error(value, "VALSTAP")),
-        tap(value => {
-          this.changeView(value)
-          console.error(value, "VALSTAP")
-        }),
+  changeSlideshowStatus(state: boolean) {
+    this.slideshowState.next(state);
+  }
 
-        defaultIfEmpty("No data :("),
-        )
-    }
-    return of(galleryData).pipe(
+  changeSlideCounter(state: number | null) {
+    if (!state) return
+    this.slideshowCounter.next(state);
+  }
+
+
+  getGallery () : Observable<any> {
+  return of(galleryData).pipe(
       delay(50),
-      tap(value => console.log(value)),
       tap(value => {
         this.changeView(value)
-        console.error(value, "VALSTAP")
       }),
       defaultIfEmpty("No data :("),
 

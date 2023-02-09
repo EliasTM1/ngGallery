@@ -55,7 +55,6 @@ export class GalleryGridComponent implements OnInit , OnDestroy{
         name:mastePiece.artist.name
     }
     })
-    // console.log(this.displayData)
   }
 
   options: NgxMasonryOptions = {

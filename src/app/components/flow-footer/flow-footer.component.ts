@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { GalleryService } from 'src/app/services/gallery.service';
 
 @Component({
@@ -13,34 +13,44 @@ export class FlowFooterComponent implements OnInit, OnDestroy {
     private galleryService: GalleryService
   ) { }
 
+  currentArtwork : any
+  subscriptions : Subscription[] = [];
+  progress : number = 0;
+  galleryLength!: number | null;
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscr => {
       subscr.unsubscribe()
     })
   }
 
-  currentArtwork : any
-  subscriptions : Subscription[] = [];
-
   ngOnInit(): void {
     this.subscriptions.push(this.galleryService.currentArtwrk.subscribe(artwork => {
-      console.log(artwork, "FOOTER ARTW")
       this.currentArtwork = artwork
     }))
-
+    this.galleryService.currentGalleryLength.pipe(
+      take(1)
+    ).subscribe(galleryLength => {
+      this.galleryLength = galleryLength
+    })
   }
 
-  progress : number = 0;
+  calculateFill () {
+    // 100% - 200 Elementos - 40 Elements === 20%
+    // 100% - 200 Elementos - 20 Elements === 10%
+    // 100% - 200 Elementos - 10 Elements === 5%
+    // % = n Elements
+    return this.progress
+  }
 
   goNext() {
-    if (this.progress < 100) {
-      this.progress = this.progress + 10;
-    }
+    if (this.progress < 100) this.progress = this.progress + 10;
+    // * Aumenta el numero ID
+    // * Calcula el width
+
   }
 
   goBack() {
-    if (this.progress > 0) {
-      this.progress = this.progress - 10;
-    }
+    if (this.progress > 0) this.progress = this.progress - 10;
   }
 }
