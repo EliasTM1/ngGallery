@@ -38,15 +38,16 @@
     }
   }
 
-  &:hover {
-  }
 }
 
 img {
   width: auto;
 
   &:hover {
-    opacity: .5;
     cursor: pointer;
   }
+}
+
+.hovered-item {
+  opacity: .5;
 }

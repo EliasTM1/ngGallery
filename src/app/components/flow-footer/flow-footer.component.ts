@@ -5,52 +5,67 @@ import { GalleryService } from 'src/app/services/gallery.service';
 @Component({
   selector: 'app-flow-footer',
   templateUrl: './flow-footer.component.html',
-  styleUrls: ['./flow-footer.component.scss']
+  styleUrls: ['./flow-footer.component.scss'],
 })
 export class FlowFooterComponent implements OnInit, OnDestroy {
+  constructor(private galleryService: GalleryService) {}
 
-  constructor(
-    private galleryService: GalleryService
-  ) { }
-
-  currentArtwork : any
-  subscriptions : Subscription[] = [];
-  progress : number = 0;
+  currentArtwork: any;
+  subscriptions: Subscription[] = [];
+  progress: number = 0;
   galleryLength!: number | null;
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(subscr => {
-      subscr.unsubscribe()
-    })
-  }
+  stepLength: number = 0;
+  currentCount: number = 0;
+  activeSlideshow: boolean = false;
+  currentWorkId: number = 0;
 
   ngOnInit(): void {
-    this.subscriptions.push(this.galleryService.currentArtwrk.subscribe(artwork => {
-      this.currentArtwork = artwork
-    }))
-    this.galleryService.currentGalleryLength.pipe(
-      take(1)
-    ).subscribe(galleryLength => {
-      this.galleryLength = galleryLength
-    })
+    this.prepareFooter();
   }
 
-  calculateFill () {
-    // 100% - 200 Elementos - 40 Elements === 20%
-    // 100% - 200 Elementos - 20 Elements === 10%
-    // 100% - 200 Elementos - 10 Elements === 5%
-    // % = n Elements
-    return this.progress
+  prepareFooter() {
+    // * Take 1rst element and end subscription
+    this.galleryService.currentGalleryLength
+      .pipe(take(1))
+      .subscribe((galleryLength) => {
+        this.galleryLength = galleryLength;
+      });
+    // * Push existent subscriptions
+    this.subscriptions.push(
+      this.galleryService.currentArtwrk.subscribe((artwork) => {
+        this.currentArtwork = artwork;
+      }),
+      this.galleryService.currentSlideshowCounter.subscribe((count) => {
+        this.currentCount = count!;
+        this.calculateFill();
+      }),
+      this.galleryService.currentSlideshowState.subscribe((state) => {
+        this.activeSlideshow = state!;
+      }),
+      this.galleryService.currentWorkId.subscribe((id) => {
+        this.currentWorkId = id!;
+      })
+    );
+  }
+
+  calculateFill() {
+    this.stepLength = 100 / this.galleryLength!;
+    this.progress = this.currentCount * this.stepLength;
   }
 
   goNext() {
-    if (this.progress < 100) this.progress = this.progress + 10;
-    // * Aumenta el numero ID
-    // * Calcula el width
-
+    if (this.progress < 100)
+      this.progress = this.progress + this.stepLength;
   }
 
   goBack() {
-    if (this.progress > 0) this.progress = this.progress - 10;
+    if (this.progress >= 0 )
+      this.progress = this.progress - this.stepLength;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscr) => {
+      subscr.unsubscribe();
+    });
   }
 }

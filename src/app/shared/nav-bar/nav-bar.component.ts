@@ -17,7 +17,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
   slideshowLegend: string = 'START';
   subscriptions: Subscription[] = [];
   galleryLength: number | null = 0;
-  slideshowTimer: any = interval(500);
+  // slideshowTimer: any = interval(5000);
+  slideshowTimer: any = interval(1000);
 
   ngOnDestroy(): void {
     // * Unsubscribe when component is destroyed
@@ -49,13 +50,15 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.galleryService.changeSlideshowStatus(this.slideshowActive);
 
     if (this.slideshowActive && this.slideshowTimer) {
-      this.slideshowTimer = this.slideshowTimer.subscribe((e: any) => {
+      this.slideshowTimer = this.slideshowTimer
+      .pipe(
+        // * Take all the elements in the obs and ends subscription.
+        take(this.galleryLength!)
+      )
+      .subscribe((e: any) => {
         e++;
         this.currentId = e;
         this.galleryService.changeSlideCounter(this.currentId);
-        if(e === this.galleryLength || e === this.galleryLength! - 1) {
-          console.log(e)
-        }
       });
     } else {
       this.resetTimer();
@@ -64,15 +67,14 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   goToGallery() {
     this.router.navigate(['gallery']);
-    // this.toggleAutoSlideshow();
-    this.slideshowActive = false;
-    this.slideshowLegend = 'START';
-    this.resetTimer();
+    if (this.slideshowActive) {
+      this.slideshowActive = false;
+      this.slideshowLegend = 'START';
+      this.resetTimer();
+    }
   }
 
   resetTimer() {
-    console.log(this.slideshowTimer, "RESET TIMER")
-    // if (this.slideshowTimer) return
     this.slideshowTimer.unsubscribe();
     this.slideshowLegend = 'START';
     this.slideshowTimer = interval(1000);

@@ -1,5 +1,5 @@
 <div class="masonry-item" [routerLink]="['/details', prepareArg()]">
-  <img src="{{ img }}" alt="some"/>
+  <img src="{{ img }}" alt="some" [ngClass]="{'hovered-item' : hoverOver }"/>
   <div>
     <span>
       {{ name }}

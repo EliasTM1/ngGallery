@@ -1,6 +1,7 @@
 {
   "editor.lineNumbers": "on",
   "workbench.colorCustomizations": {
-    "editorLineNumber.foreground": "#fa8202"
+    "editorLineNumber.foreground": "#fa8202",
+    "editorLineNumber.activeForeground": "#1eff00"
   }
 }

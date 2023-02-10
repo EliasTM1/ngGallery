@@ -16,7 +16,7 @@ export class GalleryGridComponent implements OnInit , OnDestroy{
   constructor(private galleryService: GalleryService) {}
 
 
-
+  isLoading : boolean = true
   gallery : Gallery[] = []
   displayData : GalleryTile [] = []
   containerStyles ={
@@ -27,12 +27,16 @@ export class GalleryGridComponent implements OnInit , OnDestroy{
   subscriptions : Subscription[] = [];
 
   ngOnInit(): void {
+    // TODO : Implement same login on details page component
+    // TODO : instead of cardList Component
+    // TODO : focusing login in page component instead of
+    // TODO : presentational components
     this.subscriptions.push( this.galleryService.getGallery().pipe(
       first(),
-      tap(),
       switchMap(rawData => this.getImgGridData(rawData))).subscribe(data => {
       this.gallery = data
       this.filterData(this.gallery)
+      this.isLoading = false
     }))
   }
 

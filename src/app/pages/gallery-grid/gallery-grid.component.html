@@ -1,3 +1,4 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <div class="gallery-container">
   <ngx-masonry [options]="options" [ngStyle]="containerStyles">
     <app-grid-image
@@ -10,3 +11,4 @@
     ></app-grid-image>
   </ngx-masonry>
 </div>
+

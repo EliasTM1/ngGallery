@@ -12,6 +12,6 @@ export class ProgressBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() progress : number = 20;
+  @Input() progress : number = 0;
 
 }
