@@ -1,30 +1,87 @@
+@import "../../../styles/variables";
+.footer-container {
+
+// .progress-bar {
+//   position: absolute;
+//   top: 0;
+//   background-color: red;
+// }
 footer {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: fit-content;
-  align-items: center;
-
-  .author-container {
-    margin: 1rem;
-    margin-left: 2rem;
+    // z-index: 2;
     display: flex;
-    flex-direction: column;
-  }
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
 
-  .buttons-container{
-    margin-right: 2rem;
-
-    button:first-child {
-      margin-right: 30px;
+    .author-container {
+      margin: 1rem;
+      margin-left: 2rem;
+      display: flex;
+      flex-direction: column;
     }
 
-    button {
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
+    .buttons-container{
+      margin-right: 2rem;
+
+      button:first-child {
+        margin-right: 30px;
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
     }
   }
+}
+
+
+@media screen and (max-width: $tablet-brkPoint) {
+  .footer-container {
+
+    position: absolute;
+    width: 126%;
+    z-index: 2;
+    footer {
+      // z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: fit-content;
+      align-items: center;
+
+      .author-container {
+        margin: 1rem;
+        margin-left: 2rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .buttons-container{
+        margin-right: 2rem;
+
+        button:first-child {
+          margin-right: 30px;
+        }
+
+        button {
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: $mobile-brkPoint) {
+
 }

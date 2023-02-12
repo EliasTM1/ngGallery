@@ -1,19 +1,24 @@
-<app-progress-bar [progress]="progress"></app-progress-bar>
-<footer *ngFor="let masterpice of currentArtwork">
-  <div class="author-container">
-  <span>
-      {{masterpice.name}}
-    </span>
+<div class="footer-container">
+  <app-progress-bar
+  class="progress-bar"
+   [progress]="progress"
+   ></app-progress-bar>
+  <footer *ngFor="let masterpice of currentArtwork">
+    <div class="author-container">
     <span>
-      {{masterpice.artist.name}}
-    </span>
-  </div>
-  <div class="buttons-container">
-    <button (click)="goBack()">
-      <img src="../../../assets/icon-back-button.svg" alt="backButton">
-    </button>
-    <button (click)="goNext()">
-      <img src="../../../assets/icon-next-button.svg" alt="nextButton">
-    </button>
-  </div>
-</footer>
+        {{masterpice.name}}
+      </span>
+      <span>
+        {{masterpice.artist.name}}
+      </span>
+    </div>
+    <div class="buttons-container">
+      <button (click)="goBack()">
+        <img src="../../../assets/icon-back-button.svg" alt="backButton">
+      </button>
+      <button (click)="goNext()">
+        <img src="../../../assets/icon-next-button.svg" alt="nextButton">
+      </button>
+    </div>
+  </footer>
+</div>

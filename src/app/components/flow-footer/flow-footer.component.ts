@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, take } from 'rxjs';
 import { GalleryService } from 'src/app/services/gallery.service';
@@ -8,7 +9,11 @@ import { GalleryService } from 'src/app/services/gallery.service';
   styleUrls: ['./flow-footer.component.scss'],
 })
 export class FlowFooterComponent implements OnInit, OnDestroy {
-  constructor(private galleryService: GalleryService) {}
+  constructor(
+    private galleryService: GalleryService,
+    private router: Router,
+
+    ) {}
 
   currentArtwork: any;
   subscriptions: Subscription[] = [];
@@ -63,11 +68,13 @@ export class FlowFooterComponent implements OnInit, OnDestroy {
 
   goBack() {
 console.warn(this.currentWorkId, "this.currentWorkIdthis.currentWorkId" )
+    if (this.currentWorkId > this.galleryLength!){
+      this.router.navigate(['gallery']);
+    }
     if (this.currentWorkId !== 0 )
       this.progress = this.progress - this.stepLength;
       this.currentWorkId = this.currentWorkId - 1
       this.galleryService.changeGalleryId(this.currentWorkId)
-
 
   }
 

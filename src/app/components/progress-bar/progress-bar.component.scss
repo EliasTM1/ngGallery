@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 .progress-bar {
   height: .1rem;
   width: 100%;
@@ -6,15 +8,17 @@
   overflow: hidden;
   position: absolute;
   bottom: 10%;
+  // bottom: 90px;
+
+  .progress-bar-fill {
+    height: 100%;
+    background-color: black;
+    border-radius: 5px;
+    transition: width 0.2s ease-in-out;
+    animation: slide 1s ease-in-out forwards;
+  }
 }
 
-.progress-bar-fill {
-  height: 100%;
-  background-color: black;
-  border-radius: 5px;
-  transition: width 0.2s ease-in-out;
-  animation: slide 1s ease-in-out forwards;
-}
 
 @keyframes slide {
   from {
@@ -23,4 +27,20 @@
   to {
     transform: translateX(0);
   }
+}
+
+
+@media screen and (max-width: $tablet-brkPoint) {
+  .progress-bar {
+    bottom: 90px;
+
+    .progress-bar-fill {
+
+    }
+  }
+}
+
+
+@media screen and (max-width: $mobile-brkPoint) {
+
 }
