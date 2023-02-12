@@ -54,13 +54,21 @@ export class FlowFooterComponent implements OnInit, OnDestroy {
   }
 
   goNext() {
-    if (this.progress < 100)
-      this.progress = this.progress + this.stepLength;
+    console.warn("NEXT -CURRENT", this.progress)
+    if (this.progress < 100 && this.currentWorkId < this.galleryLength!)
+    this.progress = this.progress + this.stepLength;
+    this.currentWorkId = this.currentWorkId + 1
+    this.galleryService.changeGalleryId(this.currentWorkId)
   }
 
   goBack() {
-    if (this.progress >= 0 )
+console.warn(this.currentWorkId, "this.currentWorkIdthis.currentWorkId" )
+    if (this.currentWorkId !== 0 )
       this.progress = this.progress - this.stepLength;
+      this.currentWorkId = this.currentWorkId - 1
+      this.galleryService.changeGalleryId(this.currentWorkId)
+
+
   }
 
   ngOnDestroy(): void {

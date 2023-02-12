@@ -1,9 +1,7 @@
-import { Subscription, tap } from 'rxjs';
+import { Subscription, take, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
-  ElementRef,
-  Renderer2,
   OnInit,
   OnDestroy,
 } from '@angular/core';
@@ -27,21 +25,32 @@ export class DetailsCardComponent implements OnInit, OnDestroy {
   masterpieceId: string | number | null = '';
   paint: string = '';
   subscriptions: Subscription[] = [];
+  activeSlideshow : boolean = false
 
   ngOnInit(): void {
     // * Get the data from service.
     this.subscriptions.push(
+      this.galleryService.currentWorkId.subscribe(id => {
+            this.currentMasterpiece = this.gallery.filter(
+            (masterpiece) => masterpiece.id === this.masterpieceId
+          );
+            this.startNumbrId(id!)
+      }),
       this.galleryService.currentGallery.pipe(
       ).subscribe((gallery) =>
         gallery?.forEach((e) => this.gallery.push(e))
-      )
+      ),
+      this.galleryService.currentSlideshowState.subscribe((state) =>
+        this.activeSlideshow = state!
+      ),
+      this.activaRoute.params.subscribe((param) => {
+        const { id } = param;
+        if (!Number(id)) {
+          this.startStrId(id);
+        }
+      }),
+
     );
-
-    this.activaRoute.params.subscribe((param) => {
-      const { id } = param;
-      !isNaN(id) ? this.startNumbrId(Number(id)) : this.startStrId(id);
-    });
-
     this.galleryService.changeArtWork(this.currentMasterpiece);
     this.paint = this.currentMasterpiece[0].images.hero.large;
   }

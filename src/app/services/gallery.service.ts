@@ -41,8 +41,10 @@ export class GalleryService {
   }
 
   changeArtWork(view: any) {
-    this.artwork.next(view);
-    this.workId.next(view[0].id)
+    if (view) {
+      this.artwork.next(view);
+      this.workId.next(view[0].id)
+    }
   }
 
   changeSlideshowStatus(state: boolean) {
@@ -54,10 +56,14 @@ export class GalleryService {
     this.slideshowCounter.next(state);
   }
 
-  // ? Might not need 🔴
-  changeProgress(progress: number | null) {
-    this.slideshowCounter.next(progress);
+  changeGalleryId(id: number) {
+    this.workId.next(id)
   }
+
+  // ? Might not need 🔴
+  // changeProgress(progress: number | null) {
+  //   this.slideshowCounter.next(progress);
+  // }
 
   getGallery () : Observable<any> {
   return of(galleryData).pipe(
