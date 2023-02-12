@@ -16,7 +16,7 @@ export class DetailsCardComponent implements OnInit, OnDestroy {
   ) {}
 
   currentMasterpiece: Gallery | any = null;
-  fullSizeOpen: boolean = true;
+  fullSizeOpen: boolean = false;
   gallery: Gallery[] = [];
   masterpieceId: string | number | null = '';
   paint: string = '';
