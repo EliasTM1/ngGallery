@@ -17,19 +17,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 75%;
-    width: 50;
+    // width: 50;
 
     span {
-      cursor: pointer;
+    cursor: pointer;
     text-align: right;
+    float: right;
+    width: 70%;
     letter-spacing: .2rem;
     color: white;
     margin-bottom: 2rem;
     }
 
     img {
-      width: 100%;
+      width: 70%;
     }
   }
 
@@ -39,9 +42,11 @@
   .full-size {
 
     div {
-
+      span {
+        width: 65%;
+      }
       img {
-        width: 80%;
+        width: 65%;
       }
     }
 
@@ -53,8 +58,11 @@
 
     div {
 
+      span {
+        width: 90%;
+      }
       img {
-        width: 50%;
+        width: 90%;
       }
     }
 
