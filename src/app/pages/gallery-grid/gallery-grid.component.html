@@ -1,6 +1,6 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="gallery-container">
-  <ngx-masonry [options]="options" [ngStyle]="containerStyles">
+  <ngx-masonry [options]="options">
     <app-grid-image
       ngxMasonryItem
       *ngFor="let masterPiece of displayData"

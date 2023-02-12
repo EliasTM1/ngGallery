@@ -1,8 +1,8 @@
 import { GalleryService } from 'src/app/services/gallery.service';
-import { AfterViewChecked, Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, interval, timer } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, interval } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,7 +17,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
   slideshowLegend: string = 'START';
   subscriptions: Subscription[] = [];
   galleryLength: number | null = 0;
-  // slideshowTimer: any = interval(5000);
   slideshowTimer: any = interval(1000);
 
   ngOnDestroy(): void {

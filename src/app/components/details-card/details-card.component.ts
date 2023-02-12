@@ -1,10 +1,6 @@
-import { Subscription, take, tap } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GalleryService } from 'src/app/services/gallery.service';
 import { Gallery } from 'src/interfaces/mockData.interface';
 
@@ -28,7 +24,6 @@ export class DetailsCardComponent implements OnInit, OnDestroy {
   activeSlideshow : boolean = false
 
   ngOnInit(): void {
-    // * Get the data from service.
     this.subscriptions.push(
       this.galleryService.currentWorkId.subscribe(id => {
             this.currentMasterpiece = this.gallery.filter(

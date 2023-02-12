@@ -7,7 +7,6 @@ section {
     display: flex;
     width: 90%;
     margin-top: 3rem;
-    // border: 3px purple solid;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -15,8 +14,6 @@ section {
     .card-hero {
       width: fit-content;
       height: fit-content;
-      // background-color: red;
-      // border: 3px yellow solid;
       position: relative;
 
       div {
@@ -28,7 +25,6 @@ section {
         align-items: center;
         width: 152px;
         height: 40px;
-        // border: red solid 1px;
         background-color: rgb(0, 0, 0, 0.5);
         position: absolute;
         bottom: 1.5rem;
@@ -55,12 +51,10 @@ section {
     }
 
     .card-body {
-      // border: 3px skyblue solid;
       height: 624px;
 
       .card-info {
         width: 522px;
-        // border: 3px yellow solid;
         height: 550px;
         position: relative;
 
@@ -100,7 +94,7 @@ section {
     .test-container {
       left: 25%;
       position: absolute;
-      // border: 3px solid orange;
+
       width: 400px;
       height: inherit;
       height: 100%;
@@ -117,12 +111,11 @@ section {
           display: revert;
           font-family: "Baskerville Regular";
           font-size: 0.9rem;
-          // background-color: red;
+
           letter-spacing: 1px;
           color: rgb(0, 0, 0, 0.5);
           display: flex;
         }
-        // width: 445px;
       }
     }
     #artist {
@@ -133,12 +126,10 @@ section {
 
     @media screen and (max-width: 1440px) {
       .test-container {
-        // background-color: red;
-        // left: 34%;
         .test-title {
           background-color: white;
           font-family: "Baskerville Regular";
-          // height: 12rem;
+
           line-height: 4rem;
           padding-left: 3rem;
           font-size: 56px;
@@ -160,35 +151,12 @@ section {
 @media screen and (max-width: $tablet-brkPoint) {
   section {
     .card-container {
-      .card-hero {
-        div {
-          span {
-            // width: 100%;
-            // font-family: "Baskerville Regular";
-            // font-size: 10px;
-          }
-
-          img {
-            // width: 12px;
-            // height: 12px;
-            // filter: invert(1);
-            // margin-left: 1rem;
-          }
-        }
-
-        img {
-          // width: 475px;
-          // height: 550px;
-        }
-      }
-
       .card-body {
         height: 660px;
         margin-top: 4rem;
         .card-info {
           p {
             margin-left: 8rem;
-
           }
 
           a {
@@ -204,9 +172,6 @@ section {
       .test-container {
         left: 45%;
         height: 35%;
-        .test-title {
-          // width: 445px;
-        }
       }
 
       #artist {
@@ -219,7 +184,6 @@ section {
   }
 
   .card-container {
-    // background-color: skyblue;
     flex-direction: column;
   }
 }
@@ -228,10 +192,8 @@ section {
   .test-container {
     left: 20% !important;
     height: 35%;
-    // background-color: green;
   }
 }
-
 
 @media screen and (max-width: $mobile-brkPoint) {
   section {
@@ -243,24 +205,11 @@ section {
           top: 1rem;
           left: 1.5rem;
 
-          span {
-            // width: 100%;
-            // font-family: "Baskerville Regular";
-            // font-size: 10px;
-          }
-
           img {
             width: 20px;
             margin: 0;
             height: auto;
-            margin-left: .8rem;
-            // width: 327px;
-            // width: 327px;
-            // height: 282px;
-            // width: 12px;
-            // height: 12px;
-            // filter: invert(1);
-            // margin-left: 1rem;
+            margin-left: 0.8rem;
           }
         }
 
@@ -268,9 +217,6 @@ section {
           width: 327px;
           margin-inline: 24px;
           height: auto;
-
-          // width: 475px;
-          // height: 550px;
         }
       }
 
@@ -284,7 +230,6 @@ section {
           width: 100%;
 
           p {
-            // margin-left: 8rem;
             margin-left: 0;
             width: 95%;
             text-align: left;
@@ -296,10 +241,9 @@ section {
           }
 
           #date {
-            // right: unset;
             font-weight: bold;
             font-size: 100px;
-            margin-left: 6rem ;
+            margin-left: 6rem;
             letter-spacing: 1px;
             position: relative;
           }

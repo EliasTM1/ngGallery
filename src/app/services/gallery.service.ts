@@ -1,7 +1,5 @@
 import { Injectable  } from '@angular/core';
 import { BehaviorSubject, Observable, defaultIfEmpty, delay, of, tap} from 'rxjs';
-import {  filter } from 'rxjs/operators';
-
 import galleryData from '../../mocks/data.json'
 import { Gallery } from 'src/interfaces/mockData.interface';
 
@@ -31,9 +29,6 @@ export class GalleryService {
   private workId = new BehaviorSubject<number | null>(galleryData.length);
   currentWorkId = this.workId.asObservable();
 
-
-
-
   // * Change the observables ⬇️
 
   changeView(view: any) {
@@ -59,11 +54,6 @@ export class GalleryService {
   changeGalleryId(id: number) {
     this.workId.next(id)
   }
-
-  // ? Might not need 🔴
-  // changeProgress(progress: number | null) {
-  //   this.slideshowCounter.next(progress);
-  // }
 
   getGallery () : Observable<any> {
   return of(galleryData).pipe(

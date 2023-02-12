@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostBinding, HostListener, Input } from '@angular/core';
+import {  Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-grid-image',
