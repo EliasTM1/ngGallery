@@ -1,8 +1,8 @@
 import { GalleryService } from 'src/app/services/gallery.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { take} from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',

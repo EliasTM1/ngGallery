@@ -26,9 +26,7 @@ export class DetailsCardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions.push(
       this.galleryService.currentWorkId.subscribe(id => {
-            this.currentMasterpiece = this.gallery.filter(
-            (masterpiece) => masterpiece.id === this.masterpieceId
-          );
+            this.currentMasterpiece = this.gallery.filter((masterpiece) =>   masterpiece.id === this.masterpieceId);
             this.startNumbrId(id!)
       }),
       this.galleryService.currentGallery.pipe(
@@ -54,7 +52,10 @@ export class DetailsCardComponent implements OnInit, OnDestroy {
 
   startStrId(id: any) {
     this.masterpieceId = id.replaceAll('_', ' ');
-    this.currentMasterpiece = this.gallery.filter((masterpiece) => masterpiece.name === this.masterpieceId);
+    this.currentMasterpiece = this.gallery.filter((masterpiece) => {
+    this.paint = masterpiece.images.hero.large
+    return masterpiece.name === this.masterpieceId
+    });
     this.galleryService.changeSlideCounter(this.currentMasterpiece[0].id)
     return;
   }
@@ -68,6 +69,7 @@ export class DetailsCardComponent implements OnInit, OnDestroy {
       this.currentMasterpiece = this.gallery.filter(
         (masterpiece) => masterpiece.id === this.masterpieceId
       );
+      this.paint = this.currentMasterpiece[0]?.images.hero.large
     });
     return;
   }
